@@ -61,7 +61,9 @@ public class Post {
     public void setViews(int views) {
         this.views = views;
     }
-
+    public void increaseViews(){
+        this.views += 1;
+    }
     public Post() {
     }
 
