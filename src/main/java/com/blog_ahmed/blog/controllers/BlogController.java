@@ -50,4 +50,23 @@ public class BlogController {
         model.addAttribute("post", ourPost);
         return "blog-details";
     }
+
+    @GetMapping("/blog/{id}/edit")
+    public String BlogEdit(@PathVariable(value = "id") long id, Model model){
+        if (!postRepository.existsById(id)){
+            return "redirect:/blog";
+        }
+        Optional<Post> post = postRepository.findById(id);
+        Post ourPost = post.get();
+        model.addAttribute("post", ourPost);
+        return "blog-edit";
+    }
+
+    @PostMapping("/blog/{id}/edit")
+    public String BlodPostUpdate(@PathVariable(value = "id") long id,Post model){
+        Post post = postRepository.findById(id).orElseThrow();
+        post.setPost(model);
+        postRepository.save(post);
+        return "redirect:/blog";
+    }
 }

@@ -40,6 +40,12 @@ public class Post {
         this.anons = anons;
     }
 
+    public void setPost(Post post){
+        this.title = post.title;
+        this.anons = post.anons;
+        this.full_text = post.full_text;
+    }
+
     public String getFull_text() {
         return full_text;
     }
